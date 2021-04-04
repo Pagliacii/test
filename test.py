@@ -26,11 +26,13 @@
 # Author:             Pagliacii
 # Last Modified By:   Pagliacii
 # Created Date:       2021-04-04 18:13:14
-# Last Modified Date: 2021-04-04 18:52:35
+# Last Modified Date: 2021-04-04 21:35:29
+
+from datetime import datetime
 
 
 def hello():
-    print("Hello {}".format(world()))
+    print(f"{datetime.now()}: Hello {world()}")
 
 
 def world():

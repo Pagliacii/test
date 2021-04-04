@@ -26,7 +26,7 @@
 # Author:             Pagliacii
 # Last Modified By:   Pagliacii
 # Created Date:       2021-04-04 18:13:14
-# Last Modified Date: 2021-04-04 18:43:07
+# Last Modified Date: 2021-04-04 18:50:31
 
 
 def hello():
@@ -34,7 +34,7 @@ def hello():
 
 
 def world():
-    return "World!"
+    return "World."
 
 
 if __name__ == "__main__":

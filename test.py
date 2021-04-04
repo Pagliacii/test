@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# _*_ coding: utf-8 _*_
+# -*- coding: utf-8 -*-
 
 # MIT License
 #
@@ -26,7 +26,7 @@
 # Author:             Pagliacii
 # Last Modified By:   Pagliacii
 # Created Date:       2021-04-04 18:13:14
-# Last Modified Date: 2021-04-04 21:35:29
+# Last Modified Date: 2021-04-04 23:20:05
 
 from datetime import datetime
 

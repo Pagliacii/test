@@ -26,11 +26,15 @@
 # Author:             Pagliacii
 # Last Modified By:   Pagliacii
 # Created Date:       2021-04-04 18:13:14
-# Last Modified Date: 2021-04-04 18:35:04
+# Last Modified Date: 2021-04-04 18:43:07
 
 
 def hello():
-    print("Hello World!")
+    print("Hello {}".format(world()))
+
+
+def world():
+    return "World!"
 
 
 if __name__ == "__main__":

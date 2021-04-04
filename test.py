@@ -26,11 +26,17 @@
 # Author:             Pagliacii
 # Last Modified By:   Pagliacii
 # Created Date:       2021-04-04 18:13:14
-# Last Modified Date: 2021-04-04 18:35:04
+# Last Modified Date: 2021-04-04 21:35:29
+
+from datetime import datetime
 
 
 def hello():
-    print("Hello World!")
+    print(f"{datetime.now()}: Hello {world()}")
+
+
+def world():
+    return "World"
 
 
 if __name__ == "__main__":

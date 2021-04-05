@@ -22,10 +22,13 @@
   - [[#代码][代码]]
   - [[#链接][链接]]
   - [[#数学公式][数学公式]]
+- [[#useful-links][Useful links]]
 
 * Operations
 
 ** 初始化 git 仓库
+
+查看 *git* 别名可以用这个命令 ~alias | grep git~
 
 1. ~git init~: 将一个目录初始化为 git 仓库
 2. 到 [[https://gitignore.io][gitignore.io]] 上生成一个 ~.gitignore~ 文件并提交至仓库
@@ -212,3 +215,15 @@ hello()
 x=\sqrt{b}
 \end{equation}
 #+end_src
+
+* Useful links
+
+- [[https://learnxinyminutes.com][Learn X in Y minutes]]
+- [[https://toptal.com/developers/gitignore][gitignore.io]]
+- [[https://choosealicense.com][Choose an open source license]]
+- [[https://python-poetry.org/docs][Poetry Documentation]]
+- [[https://tailwindcss.com][tailwindcss]]
+- [[https://gist.github.com][GitHub Gist]]
+- [[https://orgmode.org/manual][The Org Manual]]
+- [[http://doc.norang.ca/org-mode.html][Org Mode - Organize Your Life In Plain Text!]]
+- [[https://github.com/hlissner/doom-emacs/blob/develop/docs/index.org][Doom Emacs Documentation]]

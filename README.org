@@ -1,26 +1,161 @@
-#+TITLE: Readme
+#+title:       Readme
+#+author:      Jason Huang
+#+email:       huangmianrui0310@outlook.com
+#+date:        Mon Apr 5 23:42:06 2021
 
-* Example
+#+description: Test git operations
+#+keywords:    git, test
+#+language:    zh-cn, en
+#+startup:     content
 
-** Header 2
+* TOC :TOC:
+- [[#operations][Operations]]
+  - [[#初始化-git-仓库][初始化 git 仓库]]
+  - [[#初始化-poetry-项目][初始化 Poetry 项目]]
+  - [[#git-分支操作][git 分支操作]]
+  - [[#克隆仓库并搭建虚拟环境][克隆仓库并搭建虚拟环境]]
+- [[#org-mode-syntax][Org-mode Syntax]]
+  - [[#富文本][富文本]]
+  - [[#标题行][标题行]]
+  - [[#列表][列表]]
+  - [[#表格][表格]]
+  - [[#代码][代码]]
+  - [[#链接][链接]]
+  - [[#数学公式][数学公式]]
 
-*** Header 3
+* Operations
+
+** 初始化 git 仓库
+
+1. ~git init~: 将一个目录初始化为 git 仓库
+2. 到 [[https://gitignore.io][gitignore.io]] 上生成一个 ~.gitignore~ 文件并提交至仓库
+3. 到 [[https://choosealicense.com][choosealicense.com]] 上选择一个开源许可证，保存至 =LICENSE= 文件并提交至仓库
+4. 创建并提交 =README= 文件
+5. 远端新建仓库，如 [[https://github.com][GitHub]]
+6. 设置本地仓库远端追踪的仓库 ~git remote set-url origin git@github.com:Username/repo-name.git~
+7. 验证设置结果 ~git remote get-url origin~
+8. 推送本地修改 ~git push~
+
+** 初始化 Poetry 项目
+
+*Poetry* 安装可以参考 [[https://github.com/Pagliacii/dotfiles][Pagliacii/dotfiles]] 和[[https://python-poetry.org/docs/#installation][官方文档]]。
+
+1. 初始化命令 ~poetry init~
+2. 为当前项目创建一个新的虚拟环境 ~poetry env use python~
+3. 添加依赖包 ~poetry add package~
+4. 添加开发依赖 ~poetry add -D dev-package~
+5. 运行文件 ~poetry run python filename.py~
+6. 激活虚拟环境 ~poetry shell~
+
+** git 分支操作
+
+1. 通常开发一个新功能或者修复一个问题都会新建一个分支 ~git checkout -b branch-name~
+2. 提交修改 ~git add modified-files && git commit -m "commit message"~
+   - 查看修改的内容 ~git diff~
+   - 提交信息的格式可以参考 [[https://conventionalcommits.org/en/v1.0.0/][Conventional Commits]]
+3. 切换至主分支 ~git checkout main~
+4. 查看本地所有分支 ~git branch~
+5. 合并分支 ~git merge branch-name~
+   - 有冲突就解决冲突后提交
+6. 删除分支 ~git branch -D branch-name~
+
+上述合并分支操作是在对主分支有操作权限时的操作。如果对主分支没有合并权限，那么则可以通过提交 *Pull Requests* 的方式等待所有者审核合并你的分支。
+
+1. 推送本地分支至远端 ~git push --set-upstream origin branch-name~
+2. 到 *GitHub* 仓库页面提交 *Pull Requests*
+3. 等待有权限的人审核合并你的分支
+   - 合并后可选保留分支或删除分支
+
+** 克隆仓库并搭建虚拟环境
+
+1. 克隆仓库 ~git clone git@github.com:Username/repo-name.git~
+2. 新建虚拟环境并安装依赖 ~cd repo-name && poetry install~
+
+* Org-mode Syntax
+
+** 富文本
+
+1. 粗体 *Text*: ~*Text*~
+2. 斜体 /Text/: ~/Text/~
+3. 粗斜体 /*Text*/: ~/*Text*/~
+4. 下划线 _Text_: ~_Text_~
+5. 逐字 =Text=: ~=Text=~
+6. 代码 ~Text~: =~Text~=
+7. 删除线 +Text+: ~+Text+~
+
+** 标题行
+
+星号加空格开头的行即为标题行，相当于 *Markdown* 中的 ~#~ 号标题。空格前有几个星号即为几级标题，如：
+
+#+begin_src org
+,* Header 1
+,** Header 2
+,*** Header 3
+#+end_src
+
+** 列表
+
+以 ~+/-~ 加空格开头的行即为无序列表项，而以数字、英文句点和空格开头的则是有序列表项。而在 *Doom Emacs* 中还支持英文字母作为列表项的指示。
+
+*** 无序列表
 
 - apple
 - banana
 
-1. man
-2. woman
++ man
++ woman
 
-a. jjj
-b. ccc
+#+begin_src org
+,- apple
+,- banana
+
+,+ man
+,+ woman
+#+end_src
+
+*** 有序列表
+
+1. 天地玄黄
+2. 宇宙洪荒
+
+a. 日月盈昃
+b. 晨宿列张
+
+#+begin_src org
+,1. 天地玄黄
+,2. 宇宙洪荒
+
+,a. 日月盈昃
+,b. 晨宿列张
+#+end_src
+
+** 表格
 
 | a | b | c | d |
 |---+---+---+---|
 | 1 | 2 | 3 | 4 |
 | 5 | 6 | 7 | 8 |
 
-~print()~
+#+begin_src org
+,| a | b | c | d |
+,|---+---+---+---|
+,| 1 | 2 | 3 | 4 |
+,| 5 | 6 | 7 | 8 |
+#+end_src
+
+** 代码
+
+*** 行内代码
+
+如 ~print()~
+
+#+begin_src org
+,~print()~
+#+end_src
+
+*** 代码块
+
+如：
 
 #+begin_src python :results output
 def hello():
@@ -32,19 +167,48 @@ hello()
 #+RESULTS:
 : Hello
 
-* Example 2
+#+begin_src org
+,#+begin_src python
+def hello():
+    print("Hello")
 
-Ref: [[http://example.org][Example Inc.]]
-Header: [[*Header 2][Header 2]]
+hello()
+,#+end_src
+#+end_src
 
-* Example 3 Formula
+** 链接
 
-This is an inline math formula: \(\frac{1}{2}\)
+*** 外部链接
 
-This is a formula block: $$\frac{\pi}{2}=\cfrac{4n-2}{(4n-1)\cdot\pi}$$
+[[http://example.org][Example Inc.]]
 
+#+begin_src org
+,[[http://example.org][Example Inc.]]
+#+end_src
+
+*** 内部链接
+
+[[*Header 2][Header 2]]
+
+#+begin_src org
+,[[*Header 2][Header 2]]
+#+end_src
+
+** 数学公式
+
+使用的是 $\LaTeX$ 语法，可以有以下几种方式插入：
+
+#+begin_src org
+,$\frac{1}{2}$
+,\(3\frac{1}{2}\)
+,$$\frac{\pi}{2}=\frac{\pi}{4}+\frac{\pi}{4}$$
+,\[\frac{\pi}{2}=\frac{\pi}{4}+\frac{\pi}{4}\]
+#+end_src
+
+也可以通过以下方式插入公式：
+
+#+begin_src latex
 \begin{equation}
 x=\sqrt{b}
 \end{equation}
-
-If $a^2=b$ and \( b=2 \), then the solution must be either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
+#+end_src

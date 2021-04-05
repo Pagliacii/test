@@ -109,11 +109,11 @@
 + woman
 
 #+begin_src org
-,- apple
-,- banana
+- apple
+- banana
 
-,+ man
-,+ woman
++ man
++ woman
 #+end_src
 
 *** 有序列表
@@ -125,11 +125,11 @@ a. 日月盈昃
 b. 晨宿列张
 
 #+begin_src org
-,1. 天地玄黄
-,2. 宇宙洪荒
+1. 天地玄黄
+2. 宇宙洪荒
 
-,a. 日月盈昃
-,b. 晨宿列张
+a. 日月盈昃
+b. 晨宿列张
 #+end_src
 
 ** 表格
@@ -140,10 +140,10 @@ b. 晨宿列张
 | 5 | 6 | 7 | 8 |
 
 #+begin_src org
-,| a | b | c | d |
-,|---+---+---+---|
-,| 1 | 2 | 3 | 4 |
-,| 5 | 6 | 7 | 8 |
+| a | b | c | d |
+|---+---+---+---|
+| 1 | 2 | 3 | 4 |
+| 5 | 6 | 7 | 8 |
 #+end_src
 
 ** 代码
@@ -153,7 +153,7 @@ b. 晨宿列张
 如 ~print()~
 
 #+begin_src org
-,~print()~
+~print()~
 #+end_src
 
 *** 代码块
@@ -186,7 +186,7 @@ hello()
 [[http://example.org][Example Inc.]]
 
 #+begin_src org
-,[[http://example.org][Example Inc.]]
+[[http://example.org][Example Inc.]]
 #+end_src
 
 *** 内部链接
@@ -194,7 +194,7 @@ hello()
 [[*Header 2][Header 2]]
 
 #+begin_src org
-,[[*Header 2][Header 2]]
+[[*Header 2][Header 2]]
 #+end_src
 
 ** 数学公式
@@ -202,10 +202,10 @@ hello()
 使用的是 $\LaTeX$ 语法，可以有以下几种方式插入：
 
 #+begin_src org
-,$\frac{1}{2}$
-,\(3\frac{1}{2}\)
-,$$\frac{\pi}{2}=\frac{\pi}{4}+\frac{\pi}{4}$$
-,\[\frac{\pi}{2}=\frac{\pi}{4}+\frac{\pi}{4}\]
+$\frac{1}{2}$
+\(3\frac{1}{2}\)
+$$\frac{\pi}{2}=\frac{\pi}{4}+\frac{\pi}{4}$$
+\[\frac{\pi}{2}=\frac{\pi}{4}+\frac{\pi}{4}\]
 #+end_src
 
 也可以通过以下方式插入公式：

@@ -1,0 +1,50 @@
+#+TITLE: Readme
+
+* Example
+
+** Header 2
+
+*** Header 3
+
+- apple
+- banana
+
+1. man
+2. woman
+
+a. jjj
+b. ccc
+
+| a | b | c | d |
+|---+---+---+---|
+| 1 | 2 | 3 | 4 |
+| 5 | 6 | 7 | 8 |
+
+~print()~
+
+#+begin_src python :results output
+def hello():
+    print("Hello")
+
+hello()
+#+end_src
+
+#+RESULTS:
+: Hello
+
+* Example 2
+
+Ref: [[http://example.org][Example Inc.]]
+Header: [[*Header 2][Header 2]]
+
+* Example 3 Formula
+
+This is an inline math formula: \(\frac{1}{2}\)
+
+This is a formula block: $$\frac{\pi}{2}=\cfrac{4n-2}{(4n-1)\cdot\pi}$$
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+
+If $a^2=b$ and \( b=2 \), then the solution must be either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].

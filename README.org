@@ -53,7 +53,7 @@
 ** git 分支操作
 
 1. 通常开发一个新功能或者修复一个问题都会新建一个分支 ~git checkout -b branch-name~
-2. 提交修改 ~git add modified-files && git commit -m "commit message"~
+2. 提交修改 =git add modified-files && git commit -m "commit message"=
    - 查看修改的内容 ~git diff~
    - 提交信息的格式可以参考 [[https://conventionalcommits.org/en/v1.0.0/][Conventional Commits]]
 3. 切换至主分支 ~git checkout main~
@@ -68,6 +68,7 @@
 2. 到 *GitHub* 仓库页面提交 *Pull Requests*
 3. 等待有权限的人审核合并你的分支
    - 合并后可选保留分支或删除分支
+4. 合并之后更新本地主分支 =git checkout main && git pull=
 
 ** 克隆仓库并搭建虚拟环境
 

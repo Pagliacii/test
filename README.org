@@ -227,4 +227,6 @@ x=\sqrt{b}
 - [[https://gist.github.com][GitHub Gist]]
 - [[https://orgmode.org/manual][The Org Manual]]
 - [[http://doc.norang.ca/org-mode.html][Org Mode - Organize Your Life In Plain Text!]]
+- [[https://orgmode.org/worg/org-symbols.html][Symbols in Org-mode]]
+- [[https://en.wikibooks.org/wiki/LaTeX/Mathematics][LaTeX/Mathematics]]
 - [[https://github.com/hlissner/doom-emacs/blob/develop/docs/index.org][Doom Emacs Documentation]]

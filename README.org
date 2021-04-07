@@ -23,6 +23,8 @@
   - [[#链接][链接]]
   - [[#数学公式][数学公式]]
 - [[#useful-links][Useful links]]
+- [[#dev-packages][Dev-Packages]]
+  - [[#pre-commit][pre-commit]]
 
 * Operations
 
@@ -230,3 +232,108 @@ x=\sqrt{b}
 - [[https://orgmode.org/worg/org-symbols.html][Symbols in Org-mode]]
 - [[https://en.wikibooks.org/wiki/LaTeX/Mathematics][LaTeX/Mathematics]]
 - [[https://github.com/hlissner/doom-emacs/blob/develop/docs/index.org][Doom Emacs Documentation]]
+
+* Dev-Packages
+
+** pre-commit
+
+借用 [[https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks][Git Hooks]] 可以在将改动实际提交到代码库之前，对改动部分做代码风格、注释文档等等检查。可以自己写 hook ，也可以使用现有的 hook ，比如 [[https://pre-commit.com/hooks.html][pre-commit hooks]] 。默认情况下，hook 存放在 ~.git/hooks~ 目录下。不同的 hook 会在不同阶段被调用，比如 ~pre-commit~ 的 hook 会在执行 ~git commit~ 之后，实际提交到代码库之前被调用。
+
+使用 [[https://pre-commit.com][pre-commit]] 框架可以很方便地管理和维护多语言的 ~pre-commit hooks~ 。而且这个框架也有一套 [[https://github.com/pre-commit/pre-commit-hooks][hooks]] 可供使用，也可以使用他人提供的 [[https://pre-commit.com/hooks.html][hooks]]。 ~pre-commit~ 框架使用的配置文件是 ~.pre-commit-config.yaml~ ，可以在该文件内指定使用的 hook 。具体配置项见框架[[https://pre-commit.com/index.html#adding-pre-commit-plugins-to-your-project][文档]]。
+
+而且 ~pre-commit~ 框架可以通过指定 URL 来让它自行下载指定的 hook （只会下载一次，后续会复用），也可以调用本地程序，具体仍是通过配置文件指定。
+
+可以通过执行 ~poetry run pre-commit run --all-files~ 来对所有文件运行 hook 。也可以通过 ~poetry run pre-commit install~ 来将 hook 安装到 ~.git/hooks~ 目录，这样就可以自动调用 hook 了。
+
+*** hooks
+
+**** pre-commit-hooks
+
+这是 ~pre-commit~ 框架提供的一些开箱即用的 [[https://github.com/pre-commit/pre-commit-hooks][hooks]] 。在配置文件里指定 id 来使用指定的 hook ，比如我在配置文件里指定的以下几个 hook ：
+
++ *check-toml* - 检查所有 toml 文件的语法
++ *check-vcs-permalinks* - 确保与 VCS 网站的链接是 permalink
++ *check-yaml* - 检查所有 yaml 文件的语法
++ *debug-statements* - 检查 *Python* 源代码是否包含调试器的导入语句和 ~breakpoint()~ 调用
++ *destroyed-symlinks* - 检查被修改成常规文件的符号链接，其内容为链接指向的文件路径
++ *detect-private-key* - 检查是否存在私钥
++ *end-of-file-fixer* - 确保文件末尾包含一个空白行
++ *trailing-whitespace* - 删除行尾空白符
+
+**** mirrors-mypy
+
+[[https://github.com/python/mypy][mypy]] 是 *Python* 类型注解的检查器，而 [[https://github.com/pre-commit/mirrors-mypy][mirrors-mypy]] 则是用于 ~pre-commit~ 的 hook 。具体配置如下：
+
+#+begin_src yaml
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.812
+  hooks:
+    - id: mypy
+      args: [--no-strict-optional, --ignore-missing-imports]
+#+end_src
+
+**** pygrep-hooks
+
+[[https://github.com/pre-commit/pygrep-hooks][pygrep-hooks]] 提供了一些基于正则表达式的 hook ，我在配置里指定了以下几项：
+
++ *python-no-eval* - 检查 *Python* 代码中是否包含内置函数 ~eval()~
++ *python-use-type-annotations* - 强制使用 *Python3.6+* 类型注解
+
+**** isort
+
+[[https://github.com/PyCQA/isort][isort]] 是一款自动按字母序排列导入语句的 *Python* 工具。其 hook 配置如下：
+
+#+begin_src yaml
+- repo: https://github.com/PyCQA/isort
+  rev: 5.8.0
+  hooks:
+    - id: isort
+#+end_src
+
+**** commitizen
+
+[[https://github.com/commitizen-tools/commitizen][commitizen]] 是用于统一提交信息的工具，格式可以参考 [[https://conventionalcommits.org/en/v1.0.0/][Conventional Commits]]。其配置如下：
+
+#+begin_src yaml
+- repo: https://github.com/commitizen-tools/commitizen
+  rev: v2.17.0
+  hooks:
+    - id: commitizen
+      stages: [commit-msg]
+#+end_src
+
+**** editorconfig-checker
+
+[[https://github.com/editorconfig-checker/editorconfig-checker.python][editorconfig-checker]] 是一个用于检查文件内容是否满足 ~.editorconfig~ 里的配置项的工具。配置如下：
+
+#+begin_src yaml
+- repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  rev: 2.3.5
+  hooks:
+    - id: editorconfig-checker
+      args: [-exclude, poetry|README|pyproject|pylintrc]
+#+end_src
+
+**** local
+
+这个 ~repo~ 里的 hook 是通过使用安装在本地的工具来实际运行，如：
+
+#+begin_src yaml
+- repo: local
+  hooks:
+    - id: black
+      name: black
+      entry: poetry run black
+      language: system
+      types: [python]
+    - id: flake8
+      name: flake8
+      entry: poetry run flake8
+      language: system
+      types: [python]
+    - id: pylint
+      name: pylint
+      entry: poetry run pylint
+      language: system
+      types: [python]
+#+end_src
